@@ -4,6 +4,7 @@ import styles from "./timer.module.css";
 export default function Timer({
   currentTime,
   isStudying,
+  setCount,
   mode,
   isTimerRunning,
   startTimer,
@@ -12,6 +13,7 @@ export default function Timer({
 }: {
   currentTime: number;
   isStudying: boolean;
+  setCount: number;
   isTimerRunning: boolean;
   mode: Mode;
   startTimer: () => void;

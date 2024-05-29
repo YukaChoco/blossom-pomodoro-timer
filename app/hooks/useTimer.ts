@@ -10,6 +10,7 @@ const useTimer = () => {
   const [currentTime, setCurrentTime] = useState<number>(
     initialStudyMinute * 60
   );
+  const [setCount, setSetCount] = useState<number>(0);
   const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
@@ -34,6 +35,7 @@ const useTimer = () => {
         if (currentTime <= 0) {
           if (mode === Mode.Studying) {
             setCurrentTime(initialBreakTime);
+            setSetCount((prev) => prev + 1);
           } else if (mode === Mode.Breaking) {
             setCurrentTime(initialStudyTime);
           }
@@ -58,6 +60,7 @@ const useTimer = () => {
     mode,
     isStudying: mode === Mode.Studying,
     isTimerRunning,
+    setCount,
     startTimer,
     setIsTimerRunning,
     stopTimer,

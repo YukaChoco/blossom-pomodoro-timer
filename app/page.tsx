@@ -11,6 +11,7 @@ export default function Home() {
     mode,
     isStudying,
     isTimerRunning,
+    setCount,
     startTimer,
     stopTimer,
     restartTimer,
@@ -22,6 +23,7 @@ export default function Home() {
       <Timer
         currentTime={currentTime}
         isStudying={isStudying}
+        setCount={setCount}
         isTimerRunning={isTimerRunning}
         mode={mode}
         startTimer={startTimer}
