@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Mode } from "../types/mode";
 
 const useTimer = () => {
-  // タイマーの初期値を5分に設定する
-  const [initialStudyMinute, setInitialStudyMinute] = useState<number>(25);
-  const [initialBreakMinute, setInitialBreakMinute] = useState<number>(5);
+  // 勉強時間25分 と 休憩時間5分 の初期設定
+  const initialStudyMinute = 25;
+  const initialBreakMinute = 5;
+  // 秒に変換
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;
   const [currentTime, setCurrentTime] = useState<number>(
@@ -30,7 +31,7 @@ const useTimer = () => {
 
   // 5分カウントダウンタイマー
   useEffect(() => {
-    const timerId = setInterval(() => {
+    const timerID = setInterval(() => {
       if (mode !== Mode.Finished && mode !== Mode.BeforeStart) {
         if (currentTime <= 0) {
           if (mode === Mode.Studying) {
@@ -51,9 +52,9 @@ const useTimer = () => {
     }, 1000);
 
     return () => {
-      clearInterval(timerId);
+      clearInterval(timerID);
     };
-  }, [currentTime, mode, isTimerRunning, initialStudyTime, initialBreakTime]);
+  }, [currentTime, isTimerRunning, mode]);
 
   return {
     currentTime,
@@ -62,7 +63,6 @@ const useTimer = () => {
     isTimerRunning,
     setCount,
     startTimer,
-    setIsTimerRunning,
     stopTimer,
     restartTimer,
   };
