@@ -5,4 +5,32 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  background-image: url("../../public/sakurahaikei.png");
+  background-size: cover;
+}
+
+.result {
+  border-radius: 30px;
+  border: 5px solid;
+  border-color: #F6BEC9;
+  padding: 5% 10%;
+  background-color: rgb(255, 255, 255, 0.5);
+  width: 70%;
+  height: 60%;
+}
+
+.result h1 {
+  text-align: center;
+}
+
+.flowerCondition {
+  color: white;
+  border-radius: 40px;
+  background-color: #F6BEC9;
+  padding: 2%;
+  margin: 0 25%;
+}
+
+.otukare {
+  margin-bottom: 50px;
 }
