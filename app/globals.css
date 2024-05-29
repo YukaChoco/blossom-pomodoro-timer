@@ -11,8 +11,9 @@ body {
 }
 
 body {
-  color: rgb(6, 73, 20);
-  background: rgb(220, 240, 222);
+  color: rgb(0, 0, 0);
+  background-image: url("/sakurahaikei.png");
+  background-size: cover;
 }
 
 a {
