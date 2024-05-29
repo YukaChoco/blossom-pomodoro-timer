@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Mode } from "../types/mode";
 
 const useTimer = () => {
   // タイマーの初期値を5分に設定する
@@ -9,22 +10,40 @@ const useTimer = () => {
   const [currentTime, setCurrentTime] = useState<number>(
     initialStudyMinute * 60
   );
-  const [isStudying, setIsStudying] = useState<boolean>(true);
+  const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+
+  const startTimer = () => {
+    setIsTimerRunning(true);
+    setMode(Mode.Studying);
+    setCurrentTime(initialStudyTime);
+  };
+
+  const stopTimer = () => {
+    setIsTimerRunning(false);
+  };
+
+  const restartTimer = () => {
+    setIsTimerRunning(true);
+  };
 
   // 5分カウントダウンタイマー
   useEffect(() => {
     const timerId = setInterval(() => {
-      if (isTimerRunning) {
+      if (mode !== Mode.Finished && mode !== Mode.BeforeStart) {
         if (currentTime <= 0) {
-          if (isStudying) {
+          if (mode === Mode.Studying) {
             setCurrentTime(initialBreakTime);
-          } else {
+          } else if (mode === Mode.Breaking) {
             setCurrentTime(initialStudyTime);
           }
-          setIsStudying((prev) => !prev);
+          setMode((prev) =>
+            prev === Mode.Studying ? Mode.Breaking : Mode.Studying
+          );
         } else {
-          setCurrentTime((prev) => prev - 1);
+          if (isTimerRunning) {
+            setCurrentTime((prev) => prev - 1);
+          }
         }
       }
     }, 1000);
@@ -32,19 +51,17 @@ const useTimer = () => {
     return () => {
       clearInterval(timerId);
     };
-  }, [isTimerRunning, currentTime]);
+  }, [currentTime, mode, isTimerRunning, initialStudyTime, initialBreakTime]);
 
   return {
-    initialStudyMinute,
-    initialBreakMinute,
     currentTime,
-    isStudying,
+    mode,
+    isStudying: mode === Mode.Studying,
     isTimerRunning,
-    initialStudyTime,
-    setInitialStudyMinute,
-    setInitialBreakMinute,
-    setCurrentTime,
+    startTimer,
     setIsTimerRunning,
+    stopTimer,
+    restartTimer,
   };
 };
 
