@@ -4,14 +4,12 @@ import Score from "../types/score";
 
 const useTimer = () => {
   // 勉強時間25分 と 休憩時間5分 の初期設定
-  const initialStudyMinute = 1;
-  const initialBreakMinute = 2;
+  const initialStudyMinute = 25;
+  const initialBreakMinute = 5;
   // 秒に変換
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;
-  const [currentTime, setCurrentTime] = useState<number>(
-    initialStudyMinute * 60
-  );
+  const [currentTime, setCurrentTime] = useState<number>(initialStudyTime);
   const [setCount, setSetCount] = useState<number>(0);
   const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
@@ -88,7 +86,7 @@ const useTimer = () => {
   return {
     currentTime,
     mode,
-    isStudying: mode === Mode.Studying,
+    isStudying: mode !== Mode.Breaking,
     isTimerRunning,
     setCount,
     score,
