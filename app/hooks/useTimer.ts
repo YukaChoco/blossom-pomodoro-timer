@@ -88,7 +88,7 @@ const useTimer = () => {
   return {
     currentTime,
     mode,
-    isStudying: mode === Mode.Studying,
+    isStudying: mode !== Mode.Breaking,
     isTimerRunning,
     setCount,
     score,
