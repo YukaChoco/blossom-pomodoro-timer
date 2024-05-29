@@ -9,9 +9,7 @@ const useTimer = () => {
   // 秒に変換
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;
-  const [currentTime, setCurrentTime] = useState<number>(
-    initialStudyMinute * 60
-  );
+  const [currentTime, setCurrentTime] = useState<number>(initialStudyTime);
   const [setCount, setSetCount] = useState<number>(0);
   const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
