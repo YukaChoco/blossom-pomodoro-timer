@@ -1,18 +1,30 @@
 .timer {
   color: black;
-  background-color: white;
   font-family: "Saira", sans-serif;
   font-weight: 700;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 24rem;
   height: 24rem;
   padding: 20px 40px;
   text-align: center;
   font-size: 4.5rem;
   border-radius: 50%;
+  position: absolute;
 }
 
-.set {
-  width: 100%;
+.timerButton {
+  background-color: white;
+  border: none;
+}
+
+.timer p {
+  margin-top: 25%;
+  font-size: 1.6rem;
+}
+
+.container {
+  position:relative;
+  width: 24rem;
+  height: 24rem;
+  background-color: white;
+  border-radius: 50%;
 }
