@@ -11,6 +11,8 @@ export default function Timer({
   setCount,
   mode,
   isTimerRunning,
+  studyMaxTime,
+  breakMaxTime,
   startTimer,
   stopTimer,
   restartTimer,
@@ -20,6 +22,8 @@ export default function Timer({
   setCount: number;
   isTimerRunning: boolean;
   mode: Mode;
+  studyMaxTime: number;
+  breakMaxTime: number;
   startTimer: () => void;
   stopTimer: () => void;
   restartTimer: () => void;

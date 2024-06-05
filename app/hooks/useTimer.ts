@@ -61,6 +61,8 @@ const useTimer = () => {
     isStudying: mode === Mode.Studying,
     isTimerRunning,
     setCount,
+    studyMaxTime: initialStudyTime,
+    breakMaxTime: initialBreakTime,
     startTimer,
     setIsTimerRunning,
     stopTimer,
