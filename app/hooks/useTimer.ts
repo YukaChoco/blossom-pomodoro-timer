@@ -10,7 +10,7 @@ const useTimer = () => {
   const [currentTime, setCurrentTime] = useState<number>(
     initialStudyMinute * 60
   );
-  const [setCount, setSetCount] = useState<number>(0);
+  const [setCount, setSetCount] = useState<number>(1);
   const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
