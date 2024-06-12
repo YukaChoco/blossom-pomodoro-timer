@@ -3,7 +3,7 @@ import useTimer from "./hooks/useTimer";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import styles from "./page.module.css";
-import { Mode } from "./types/mode";
+import ModeIcon from "./components/ModeIcon";
 
 export default function Home() {
   const {
@@ -34,6 +34,7 @@ export default function Home() {
         stopTimer={stopTimer}
         restartTimer={restartTimer}
       />
+      <ModeIcon mode={mode} />
     </main>
   );
 }
