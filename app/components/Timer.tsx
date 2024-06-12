@@ -3,7 +3,7 @@ import styles from "./timer.module.css";
 import React, { useState, useEffect, use } from "react";
 import CircularProgress from '@mui/joy/CircularProgress';
 import { relative } from "path";
-
+import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 
 export default function Timer({
   currentTime,
@@ -28,20 +28,30 @@ export default function Timer({
   stopTimer: () => void;
   restartTimer: () => void;
 }) {
-  
-
-  const radius = 100;
-  const circumference = 2*Math.PI * radius;
-  const progress = currentTime / 300;
-  const offset = circumference * (1-progress);
+  const progress = isStudying
+    ? 100 - (currentTime / studyMaxTime) * 100
+    : 100 - (currentTime / breakMaxTime) * 100;
 
   const [setcount, setSetcount] = useState(1);
 
   return (
+    <div className={styles.sakuracontainer}>
+    <img src="./Frame 2.png"></img>
     <div className={styles.container}>
-      <CircularProgress sx={{ '--CircularProgress-size': '24rem', position: "absolute"}} determinate value={progress} thickness={20} />
-    <div className={styles.timer}>
-        <div><p>{setcount}セット目</p></div>
+      <CircularProgress
+        sx={{
+          "--CircularProgress-size": "24rem",
+          position: "absolute",
+          "--CircularProgress-trackColor": "#797979",
+          "--CircularProgress-progressColor": "#FFD600"
+        }}
+        thickness={20}
+        determinate value={progress}
+      />
+      <div className={styles.timer}>
+        <div>
+          <p>{setcount}セット目</p>
+        </div>
         <div>
           <span>
             {Math.floor(currentTime / 600) < 10
@@ -57,14 +67,21 @@ export default function Timer({
         </div>
         {mode === Mode.BeforeStart ? (
           // 勉強開始前
-          <button className={styles.timerButton} onClick={startTimer}><img src="/playButton.svg"></img></button>
+          <button className={styles.timerButton} onClick={startTimer}>
+            <img src="/playButton.svg"></img>
+          </button>
         ) : isTimerRunning ? (
           // 勉強中の一時停止
-          <button className={styles.timerButton} onClick={stopTimer}><img src="/stopButton.svg"></img></button>
+          <button className={styles.timerButton} onClick={stopTimer}>
+            <img src="/stopButton.svg"></img>
+          </button>
         ) : (
           // 勉強中の再開
-          <button className={styles.timerButton} onClick={restartTimer}><img src="/playButton.svg"></img></button>
+          <button className={styles.timerButton} onClick={restartTimer}>
+            <img src="/playButton.svg"></img>
+          </button>
         )}
+      </div>
     </div>
     </div>
   );

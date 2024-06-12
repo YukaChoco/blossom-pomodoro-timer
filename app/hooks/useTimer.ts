@@ -3,7 +3,7 @@ import { Mode } from "../types/mode";
 
 const useTimer = () => {
   // タイマーの初期値を5分に設定する
-  const [initialStudyMinute, setInitialStudyMinute] = useState<number>(25);
+  const [initialStudyMinute, setInitialStudyMinute] = useState<number>(1);
   const [initialBreakMinute, setInitialBreakMinute] = useState<number>(5);
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;
@@ -58,7 +58,7 @@ const useTimer = () => {
   return {
     currentTime,
     mode,
-    isStudying: mode === Mode.Studying,
+    isStudying: mode !== Mode.Breaking,
     isTimerRunning,
     setCount,
     studyMaxTime: initialStudyTime,
