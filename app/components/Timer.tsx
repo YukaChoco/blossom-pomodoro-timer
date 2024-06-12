@@ -32,8 +32,6 @@ export default function Timer({
     ? 100 - (currentTime / studyMaxTime) * 100
     : 100 - (currentTime / breakMaxTime) * 100;
 
-  const [setcount, setSetcount] = useState(1);
-
   return (
     <div className={styles.sakuracontainer}>
       <img src="./Frame 2.png" />
@@ -50,7 +48,7 @@ export default function Timer({
         />
         <div className={styles.timer}>
           <div>
-            <p>{setcount}セット目</p>
+            <p>{setCount}セット目</p>
           </div>
           <div>
             <span>
