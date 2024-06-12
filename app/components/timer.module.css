@@ -22,13 +22,24 @@
 }
 
 .container {
-  position:relative;
+  position:absolute;
+  top: 50%;
+  top: 15.3rem;
+  left: 50%;
+  left: 15.3rem;
+  float: left;
   width: 24rem;
   height: 24rem;
   background-color: white;
   border-radius: 50%;
 }
 
+.image {
+  position: absolute;
+  top: 0;
+}
+
 .sakuracontainer {
   position: relative;
 }
+
