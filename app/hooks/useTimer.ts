@@ -4,8 +4,8 @@ import Score from "../types/score";
 
 const useTimer = () => {
   // 勉強時間25分 と 休憩時間5分 の初期設定
-  const initialStudyMinute = 25;
-  const initialBreakMinute = 5;
+  const initialStudyMinute = 0.25;
+  const initialBreakMinute = 0.5;
   // 秒に変換
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;

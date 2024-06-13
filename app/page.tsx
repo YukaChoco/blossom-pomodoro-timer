@@ -23,8 +23,14 @@ export default function Home() {
     finishStudy,
   } = useTimer();
 
+  const backgroundImg = {
+    backgroundImage: isStudying
+      ? 'url("/sakurahaikei.png")'
+      : 'url("/sakurahaikei_night.png")',
+  };
+
   return (
-    <main className={styles.main}>
+    <main style={backgroundImg} className={styles.main}>
       <Header />
       {mode === Mode.Finished ? (
         <ResultPage score={score} />
