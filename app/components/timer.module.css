@@ -22,11 +22,11 @@
 }
 
 .container {
-  position:absolute;
+  position: absolute;
   top: 50%;
-  top: 15.3rem;
+  top: 18rem;
   left: 50%;
-  left: 15.3rem;
+  left: 18rem;
   float: left;
   width: 24rem;
   height: 24rem;
@@ -36,4 +36,10 @@
 
 .sakuracontainer {
   position: relative;
+}
+
+.clip {
+  width: 60rem;
+  height: 60rem;
+  /* clip-path: polygon(100% 0%, 50% 0%,50% 50%, 100% 40%); */
 }

@@ -1,9 +1,10 @@
 import { Mode } from "../types/mode";
 import styles from "./timer.module.css";
 import React, { useState, useEffect, use } from "react";
-import CircularProgress from '@mui/joy/CircularProgress';
+import CircularProgress from "@mui/joy/CircularProgress";
 import { relative } from "path";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
+import { Box } from "@mui/joy";
 
 export default function Timer({
   currentTime,
@@ -32,19 +33,39 @@ export default function Timer({
     ? 100 - (currentTime / studyMaxTime) * 100
     : 100 - (currentTime / breakMaxTime) * 100;
 
+  const getClipPath = (progress: number) => {
+    if (progress <= 25) {
+      const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
+      return `polygon(50% 0%, ${x}% 0%, 50% 50%, 50% 0%)`;
+    } else if (progress <= 50) {
+      const y = 50 + 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
+      return `polygon(50% 0%, 100% 0%, 100% ${y}%, 50% 50%)`;
+    } else if (progress < 75) {
+      const x = 50 - 50 * Math.tan((progress * 3.6 - 180) * (Math.PI / 180));
+      return `polygon(50% 0%, 100% 0%, 100% 100%, ${x}% 100%, 50% 50%)`;
+    } else {
+      const y = 50 - 50 * Math.tan((progress * 3.6 - 270) * (Math.PI / 180));
+      return `polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% ${y}%, 50% 50%)`;
+    }
+  };
+
+  const clipPath = getClipPath(progress);
+
   return (
     <div className={styles.sakuracontainer}>
-      <img src="./Frame 2.png" />
+      <img src="./Frame2.png" className={styles.clip} style={{ clipPath }} />
+      {/* <div className={styles.sakuraImage} /> */}
       <div className={styles.container}>
         <CircularProgress
           sx={{
             "--CircularProgress-size": "24rem",
             position: "absolute",
             "--CircularProgress-trackColor": "#797979",
-            "--CircularProgress-progressColor": "#FFD600"
+            "--CircularProgress-progressColor": "#FFD600",
           }}
           thickness={20}
-          determinate value={progress}
+          determinate
+          value={progress}
         />
         <div className={styles.timer}>
           <div>
@@ -59,7 +80,9 @@ export default function Timer({
             <span>{Math.floor((currentTime / 60) % 10)}</span>
             <span>:</span>
             <span>
-              {currentTime % 60 < 10 ? "0" : Math.floor((currentTime % 60) / 10)}
+              {currentTime % 60 < 10
+                ? "0"
+                : Math.floor((currentTime % 60) / 10)}
             </span>
             <span>{(currentTime % 60) % 10}</span>
           </div>
