@@ -33,18 +33,22 @@ export default function Timer({
   const intCurrentTime = Math.floor(currentTime);
 
   const getClipPath = (progress: number) => {
-    if (progress <= 25) {
-      const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
-      return `polygon(50% 0%, ${x}% 0%, 50% 50%, 50% 0%)`;
-    } else if (progress <= 50) {
-      const y = 50 + 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
-      return `polygon(50% 0%, 100% 0%, 100% ${y}%, 50% 50%)`;
-    } else if (progress < 75) {
-      const x = 50 - 50 * Math.tan((progress * 3.6 - 180) * (Math.PI / 180));
-      return `polygon(50% 0%, 100% 0%, 100% 100%, ${x}% 100%, 50% 50%)`;
+    if (isStudying && progress < 100) {
+      if (progress <= 25) {
+        const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
+        return `polygon(50% 0%, ${x}% 0%, 50% 50%, 50% 0%)`;
+      } else if (progress <= 50) {
+        const y = 50 + 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
+        return `polygon(50% 0%, 100% 0%, 100% ${y}%, 50% 50%)`;
+      } else if (progress < 75) {
+        const x = 50 - 50 * Math.tan((progress * 3.6 - 180) * (Math.PI / 180));
+        return `polygon(50% 0%, 100% 0%, 100% 100%, ${x}% 100%, 50% 50%)`;
+      } else {
+        const y = 50 - 50 * Math.tan((progress * 3.6 - 270) * (Math.PI / 180));
+        return `polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% ${y}%, 50% 50%)`;
+      }
     } else {
-      const y = 50 - 50 * Math.tan((progress * 3.6 - 270) * (Math.PI / 180));
-      return `polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% ${y}%, 50% 50%)`;
+      return "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
     }
   };
 
@@ -60,7 +64,9 @@ export default function Timer({
             "--CircularProgress-size": "24rem",
             position: "absolute",
             "--CircularProgress-trackColor": "#797979",
-            "--CircularProgress-progressColor": "#FFD600",
+            "--CircularProgress-progressColor": isStudying
+              ? "#FFD600"
+              : "#1A405F",
             "--CircularProgress-linecap": "none",
           }}
           thickness={20}
