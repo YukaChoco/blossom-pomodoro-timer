@@ -44,7 +44,7 @@ export default function Timer({
       } else if (progress <= 50) {
         const y = 50 + 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
         if (y >= 100000) {
-          return `polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%)`;
+          return `polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%)`;
         }
         return `polygon(50% 0%, 100% 0%, 100% ${y}%, 50% 50%)`;
       } else if (progress <= 75) {
@@ -82,7 +82,7 @@ export default function Timer({
       } else {
         const y = 50 - 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
         if (y <= -100000) {
-          return `polygon(50% 0%, 0% 0%, 0% 100%, 50% 100%, 50% 50%)`;
+          return `polygon(0% 0%)`;
         }
         return `polygon(50% 0%, 0% 0%, 0% ${y}%, 50% 50%)`;
       }
@@ -100,7 +100,7 @@ export default function Timer({
           sx={{
             "--CircularProgress-size": "24rem",
             position: "absolute",
-            "--CircularProgress-trackColor": isStudying?"#797979":"#FFD600",
+            "--CircularProgress-trackColor": isStudying ? "#797979" : "#FFD600",
             "--CircularProgress-progressColor": isStudying
               ? "#FFD600"
               : "#797979",
