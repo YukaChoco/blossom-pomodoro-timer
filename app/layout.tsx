@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "めいちゃんのためのポモドーロタイマー",
-  description: "めいちゃんのために用意した勉強用ポモドーロタイマーです。",
+  title: "🌸PomodoroTimer",
+  description: "桜をモチーフにしたポモドーロタイマーです。勉強や作業のお供にご活用ください🌸",
 };
 
 export default function RootLayout({

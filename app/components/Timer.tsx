@@ -116,7 +116,7 @@ export default function Timer({
           </div>
           <div>
             <span>
-              {Math.floor(intCurrentTime / 600) < 10
+              {Math.floor(intCurrentTime / 60) < 10
                 ? "0"
                 : Math.floor(intCurrentTime / 600)}
             </span>
