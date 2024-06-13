@@ -34,7 +34,6 @@ export default function Timer({
 
   const getClipPath = (progress: number) => {
     if (isStudying) {
-      // !消す
       if (progress <= 25) {
         const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
         if (x >= 100000) {

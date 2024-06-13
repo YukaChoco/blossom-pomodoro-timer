@@ -14,6 +14,8 @@ export default function Home() {
     isStudying,
     isTimerRunning,
     setCount,
+    studyMaxTime,
+    breakMaxTime,
     score,
     startTimer,
     stopTimer,
@@ -37,6 +39,8 @@ export default function Home() {
           stopTimer={stopTimer}
           restartTimer={restartTimer}
           finishStudy={finishStudy}
+          studyMaxTime={studyMaxTime}
+          breakMaxTime={breakMaxTime}
         />
       )}
     </main>

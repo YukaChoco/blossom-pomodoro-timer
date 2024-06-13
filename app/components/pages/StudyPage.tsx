@@ -7,6 +7,8 @@ export default function StudyPage({
   isStudying,
   isTimerRunning,
   setCount,
+  studyMaxTime,
+  breakMaxTime,
   startTimer,
   stopTimer,
   restartTimer,
@@ -17,6 +19,8 @@ export default function StudyPage({
   isStudying: boolean;
   isTimerRunning: boolean;
   setCount: number;
+  studyMaxTime: number;
+  breakMaxTime: number;
   startTimer: () => void;
   stopTimer: () => void;
   restartTimer: () => void;
@@ -33,6 +37,8 @@ export default function StudyPage({
         startTimer={startTimer}
         stopTimer={stopTimer}
         restartTimer={restartTimer}
+        studyMaxTime={studyMaxTime}
+        breakMaxTime={breakMaxTime}
       />
       <button onClick={finishStudy}>勉強を終える</button>
     </div>
