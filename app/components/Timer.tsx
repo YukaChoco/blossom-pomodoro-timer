@@ -33,22 +33,59 @@ export default function Timer({
   const intCurrentTime = Math.floor(currentTime);
 
   const getClipPath = (progress: number) => {
-    if (isStudying && progress < 100) {
+    if (isStudying) {
+      // !消す
       if (progress <= 25) {
         const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
+        if (x >= 100000) {
+          return `polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%)`;
+        }
         return `polygon(50% 0%, ${x}% 0%, 50% 50%, 50% 0%)`;
       } else if (progress <= 50) {
         const y = 50 + 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
+        if (y >= 100000) {
+          return `polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%)`;
+        }
         return `polygon(50% 0%, 100% 0%, 100% ${y}%, 50% 50%)`;
-      } else if (progress < 75) {
+      } else if (progress <= 75) {
         const x = 50 - 50 * Math.tan((progress * 3.6 - 180) * (Math.PI / 180));
+        if (x <= -100000) {
+          return `polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%, 50% 50%)`;
+        }
         return `polygon(50% 0%, 100% 0%, 100% 100%, ${x}% 100%, 50% 50%)`;
       } else {
         const y = 50 - 50 * Math.tan((progress * 3.6 - 270) * (Math.PI / 180));
+        if (y <= -100000) {
+          return `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`;
+        }
         return `polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% ${y}%, 50% 50%)`;
       }
     } else {
-      return "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+      if (progress <= 25) {
+        const x = 50 + 50 * Math.tan(progress * 3.6 * (Math.PI / 180));
+        if (x >= 100000) {
+          return `polygon(0% 0%, 50% 0%, 50% 50%, 100% 50%, 100% 100%, 0% 100%)`;
+        }
+        return `polygon(0% 0%, 50% 0%, 50% 50%, ${x}% 0%, 100% 0%, 100% 100%, 0% 100%)`;
+      } else if (progress <= 50) {
+        const y = 50 + 50 * Math.tan((progress * 3.6 - 270) * (Math.PI / 180));
+        if (y >= 100000) {
+          return `polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%)`;
+        }
+        return `polygon(50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% ${y}%, 50% 50%)`;
+      } else if (progress <= 75) {
+        const x = 50 - 50 * Math.tan((progress * 3.6 - 180) * (Math.PI / 180));
+        if (x <= -100000) {
+          return `polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%)`;
+        }
+        return `polygon(0% 0%, 50% 0%, 50% 50%, ${x}% 100%, 0% 100%)`;
+      } else {
+        const y = 50 - 50 * Math.tan((progress * 3.6 - 90) * (Math.PI / 180));
+        if (y <= -100000) {
+          return `polygon(50% 0%, 0% 0%, 0% 100%, 50% 100%, 50% 50%)`;
+        }
+        return `polygon(50% 0%, 0% 0%, 0% ${y}%, 50% 50%)`;
+      }
     }
   };
 
