@@ -61,6 +61,7 @@ export default function Timer({
             position: "absolute",
             "--CircularProgress-trackColor": "#797979",
             "--CircularProgress-progressColor": "#FFD600",
+            "--CircularProgress-linecap": "none",
           }}
           thickness={20}
           determinate
