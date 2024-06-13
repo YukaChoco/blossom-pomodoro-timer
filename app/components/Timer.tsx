@@ -99,11 +99,25 @@ export default function Timer({
           sx={{
             "--CircularProgress-size": "24rem",
             position: "absolute",
-            "--CircularProgress-trackColor": isStudying ? "#797979" : "#FFD600",
-            "--CircularProgress-progressColor": isStudying
-              ? "#FFD600"
-              : "#797979",
+            "--CircularProgress-trackColor": "#797979",
+            "--CircularProgress-progressColor": "#FFD600",
             "--CircularProgress-linecap": "none",
+            opacity: isStudying ? 1 : 0,
+            transition: "opacity 1s",
+          }}
+          thickness={20}
+          determinate
+          value={progress}
+        />
+        <CircularProgress
+          sx={{
+            "--CircularProgress-size": "24rem",
+            position: "absolute",
+            "--CircularProgress-trackColor": "#1A405F",
+            "--CircularProgress-progressColor": "#797979",
+            "--CircularProgress-linecap": "none",
+            opacity: isStudying ? 0 : 1,
+            transition: "opacity 1s",
           }}
           thickness={20}
           determinate
