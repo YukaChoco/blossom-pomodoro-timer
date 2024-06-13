@@ -1,10 +1,7 @@
 import { Mode } from "../types/mode";
 import styles from "./timer.module.css";
-import React, { useState, useEffect, use } from "react";
+import React from "react";
 import CircularProgress from "@mui/joy/CircularProgress";
-import { relative } from "path";
-import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
-import { Box } from "@mui/joy";
 
 export default function Timer({
   currentTime,
@@ -32,6 +29,8 @@ export default function Timer({
   const progress = isStudying
     ? 100 - (currentTime / studyMaxTime) * 100
     : 100 - (currentTime / breakMaxTime) * 100;
+
+  const intCurrentTime = Math.floor(currentTime);
 
   const getClipPath = (progress: number) => {
     if (progress <= 25) {
@@ -73,18 +72,18 @@ export default function Timer({
           </div>
           <div>
             <span>
-              {Math.floor(currentTime / 600) < 10
+              {Math.floor(intCurrentTime / 600) < 10
                 ? "0"
-                : Math.floor(currentTime / 600)}
+                : Math.floor(intCurrentTime / 600)}
             </span>
-            <span>{Math.floor((currentTime / 60) % 10)}</span>
+            <span>{Math.floor((intCurrentTime / 60) % 10)}</span>
             <span>:</span>
             <span>
-              {currentTime % 60 < 10
+              {intCurrentTime % 60 < 10
                 ? "0"
-                : Math.floor((currentTime % 60) / 10)}
+                : Math.floor((intCurrentTime % 60) / 10)}
             </span>
-            <span>{(currentTime % 60) % 10}</span>
+            <span>{(intCurrentTime % 60) % 10}</span>
           </div>
           {mode === Mode.BeforeStart ? (
             // 勉強開始前

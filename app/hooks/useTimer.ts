@@ -35,7 +35,7 @@ const useTimer = () => {
         if (currentTime <= 0) {
           if (mode === Mode.Studying) {
             setCurrentTime(initialBreakTime);
-            setSetCount((prev) => prev + 1);
+            setSetCount((prev) => prev + 0.1);
           } else if (mode === Mode.Breaking) {
             setCurrentTime(initialStudyTime);
           }
@@ -44,11 +44,11 @@ const useTimer = () => {
           );
         } else {
           if (isTimerRunning) {
-            setCurrentTime((prev) => prev - 1);
+            setCurrentTime((prev) => prev - 0.1);
           }
         }
       }
-    }, 1000);
+    }, 100);
 
     return () => {
       clearInterval(timerId);
