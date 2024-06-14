@@ -2,7 +2,6 @@
 import useTimer from "./hooks/useTimer";
 import Header from "./components/Header";
 import styles from "./page.module.css";
-import ModeIcon from "./components/ModeIcon";
 import ResultPage from "./components/pages/ResultPage";
 import StudyPage from "./components/pages/StudyPage";
 import { Mode } from "./types/mode";
