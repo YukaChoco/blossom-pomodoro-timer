@@ -92,7 +92,11 @@ export default function Timer({
 
   return (
     <div className={styles.sakuracontainer}>
-      <img src="./Frame3.png" className={styles.clip} />
+      <img
+        src="./Frame3.png"
+        className={styles.clip}
+        style={{ visibility: isStudying ? "visible" : "hidden" }}
+      />
       <img src="./Frame2.png" className={styles.clip} style={{ clipPath }} />
       <div className={styles.container}>
         <CircularProgress
