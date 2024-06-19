@@ -1,9 +1,10 @@
 "use client";
 import useTimer from "./hooks/useTimer";
 import Header from "./components/Header";
-import Timer from "./components/Timer";
 import styles from "./page.module.css";
-import ModeIcon from "./components/ModeIcon";
+import ResultPage from "./components/pages/ResultPage";
+import StudyPage from "./components/pages/StudyPage";
+import { Mode } from "./types/mode";
 
 export default function Home() {
   const {
@@ -14,27 +15,39 @@ export default function Home() {
     setCount,
     studyMaxTime,
     breakMaxTime,
+    score,
     startTimer,
     stopTimer,
     restartTimer,
+    finishStudy,
   } = useTimer();
 
+  const backgroundImg = {
+    backgroundImage: isStudying
+      ? 'url("/sakurahaikei.png")'
+      : 'url("/sakurahaikei_night.png")',
+  };
+
   return (
-    <main className={styles.main}>
+    <main style={backgroundImg} className={styles.main}>
       <Header />
-        <Timer
+      {mode === Mode.Finished ? (
+        <ResultPage score={score} />
+      ) : (
+        <StudyPage
           currentTime={currentTime}
-          isStudying={isStudying}
-          setCount={setCount}
-          isTimerRunning={isTimerRunning}
           mode={mode}
-          studyMaxTime={studyMaxTime}
-          breakMaxTime={breakMaxTime}
+          isStudying={isStudying}
+          isTimerRunning={isTimerRunning}
+          setCount={setCount}
           startTimer={startTimer}
           stopTimer={stopTimer}
           restartTimer={restartTimer}
+          finishStudy={finishStudy}
+          studyMaxTime={studyMaxTime}
+          breakMaxTime={breakMaxTime}
         />
-        <ModeIcon mode={mode} />
+      )}
     </main>
   );
 }

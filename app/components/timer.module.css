@@ -22,11 +22,11 @@
 }
 
 .container {
-  position:absolute;
+  position: absolute;
   top: 50%;
-  top: 15.8rem;
+  top: 18rem;
   left: 50%;
-  left: 15.8rem;
+  left: 18rem;
   float: left;
   width: 24rem;
   height: 24rem;
@@ -34,12 +34,14 @@
   border-radius: 50%;
 }
 
-.image {
-  position: absolute;
-  top: 0;
-}
-
 .sakuracontainer {
   position: relative;
+  width: 60rem;
+  height: 60rem;
 }
 
+.clip {
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+}

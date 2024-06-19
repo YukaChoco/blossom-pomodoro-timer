@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { Mode } from "../types/mode";
+import Score from "../types/score";
 
 const useTimer = () => {
-  // タイマーの初期値を5分に設定する
-  const [initialStudyMinute, setInitialStudyMinute] = useState<number>(1);
-  const [initialBreakMinute, setInitialBreakMinute] = useState<number>(5);
+  // 勉強時間25分 と 休憩時間5分 の初期設定
+  const initialStudyMinute = 25;
+  const initialBreakMinute = 5;
+  // 秒に変換
   const initialStudyTime = initialStudyMinute * 60;
   const initialBreakTime = initialBreakMinute * 60;
-  const [currentTime, setCurrentTime] = useState<number>(
-    initialStudyMinute * 60
-  );
-  const [setCount, setSetCount] = useState<number>(0);
+  const [currentTime, setCurrentTime] = useState<number>(initialStudyTime);
+  const [setCount, setSetCount] = useState<number>(1);
   const [mode, setMode] = useState<Mode>(Mode.BeforeStart);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+  const [score, setScore] = useState<Score>({ time: 0, flower: 0 });
 
   const startTimer = () => {
     setIsTimerRunning(true);
@@ -28,32 +29,78 @@ const useTimer = () => {
     setIsTimerRunning(true);
   };
 
+  const finishStudy = () => {
+    setIsTimerRunning(false);
+    setMode(Mode.Finished);
+    setScore(getScore());
+  };
+
+  const getScore = (): Score => {
+    const getTotalStudyTime = (
+      settingStudyMinute: number,
+      settingBreakMinute: number,
+      currentMinute: number,
+      currentSetCount: number
+    ): number => {
+      if (mode === Mode.BeforeStart) {
+        return 0;
+      }
+      const resultMinute =
+        mode === Mode.Studying
+          ? (currentSetCount - 1) * (settingStudyMinute + settingBreakMinute) +
+            (settingStudyMinute - currentMinute)
+          : currentSetCount * (settingStudyMinute + settingBreakMinute);
+      const resultHour = Math.floor((resultMinute / 60) * 2) / 2;
+      return resultHour;
+    };
+    const totalStudyTime = getTotalStudyTime(
+      initialStudyMinute,
+      initialBreakMinute,
+      currentTime / 60,
+      setCount
+    );
+    switch (true) {
+      case totalStudyTime >= 2:
+        return { time: totalStudyTime, flower: 10 };
+      case totalStudyTime >= 1.5:
+        return { time: totalStudyTime, flower: 7 };
+      case totalStudyTime >= 1:
+        return { time: totalStudyTime, flower: 5 };
+      case totalStudyTime >= 0.5:
+        return { time: totalStudyTime, flower: 3 };
+      case mode === Mode.Studying:
+        return { time: totalStudyTime, flower: 1 };
+      default:
+        return { time: totalStudyTime, flower: 0 };
+    }
+  };
+
   // 5分カウントダウンタイマー
   useEffect(() => {
-    const timerId = setInterval(() => {
+    const timerID = setInterval(() => {
       if (mode !== Mode.Finished && mode !== Mode.BeforeStart) {
-        if (currentTime <= 0) {
+        if (currentTime - 0.1 <= 0) {
           if (mode === Mode.Studying) {
             setCurrentTime(initialBreakTime);
-            setSetCount((prev) => prev + 1);
           } else if (mode === Mode.Breaking) {
             setCurrentTime(initialStudyTime);
+            setSetCount((prev) => prev + 1);
           }
           setMode((prev) =>
             prev === Mode.Studying ? Mode.Breaking : Mode.Studying
           );
         } else {
           if (isTimerRunning) {
-            setCurrentTime((prev) => prev - 1);
+            setCurrentTime((prev) => prev - 0.1);
           }
         }
       }
-    }, 1000);
+    }, 100);
 
     return () => {
-      clearInterval(timerId);
+      clearInterval(timerID);
     };
-  }, [currentTime, mode, isTimerRunning, initialStudyTime, initialBreakTime]);
+  }, [currentTime, isTimerRunning, mode]);
 
   return {
     currentTime,
@@ -63,10 +110,11 @@ const useTimer = () => {
     setCount,
     studyMaxTime: initialStudyTime,
     breakMaxTime: initialBreakTime,
+    score,
     startTimer,
-    setIsTimerRunning,
     stopTimer,
     restartTimer,
+    finishStudy,
   };
 };
 

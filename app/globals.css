@@ -11,8 +11,8 @@ body {
 }
 
 body {
-  color: black;
-  background: rgb(220, 240, 222);
+  color: rgb(0, 0, 0);
+  background-color: white;
 }
 
 a {
