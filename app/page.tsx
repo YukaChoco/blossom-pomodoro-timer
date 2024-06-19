@@ -22,19 +22,19 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Header />
-      <Timer
-        currentTime={currentTime}
-        isStudying={isStudying}
-        setCount={setCount}
-        isTimerRunning={isTimerRunning}
-        mode={mode}
-        studyMaxTime={studyMaxTime}
-        breakMaxTime={breakMaxTime}
-        startTimer={startTimer}
-        stopTimer={stopTimer}
-        restartTimer={restartTimer}
-      />
-      <ModeIcon mode={mode} />
+        <Timer
+          currentTime={currentTime}
+          isStudying={isStudying}
+          setCount={setCount}
+          isTimerRunning={isTimerRunning}
+          mode={mode}
+          studyMaxTime={studyMaxTime}
+          breakMaxTime={breakMaxTime}
+          startTimer={startTimer}
+          stopTimer={stopTimer}
+          restartTimer={restartTimer}
+        />
+        <ModeIcon mode={mode} />
     </main>
   );
 }
