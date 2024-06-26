@@ -1,4 +1,3 @@
-import ModeIcon from "../ModeIcon";
 import Timer from "../Timer";
 import type { Mode } from "@/app/types/mode";
 
@@ -42,7 +41,6 @@ export default function StudyPage({
         breakMaxTime={breakMaxTime}
       />
       <button onClick={finishStudy}>勉強を終える</button>
-      <ModeIcon mode={mode} />
     </div>
   );
 }

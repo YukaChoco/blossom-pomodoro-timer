@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import ResultPage from "./components/pages/ResultPage";
 import StudyPage from "./components/pages/StudyPage";
 import { Mode } from "./types/mode";
+import ModeIcon from "./components/ModeIcon";
 
 export default function Home() {
   const {
@@ -48,6 +49,7 @@ export default function Home() {
           breakMaxTime={breakMaxTime}
         />
       )}
+      <ModeIcon mode={mode} />
     </main>
   );
 }
