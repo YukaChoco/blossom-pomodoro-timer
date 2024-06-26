@@ -98,35 +98,39 @@ export default function Timer({
         style={{ visibility: isStudying ? "visible" : "hidden" }}
       />
       <img src="./Frame2.png" className={styles.clip} style={{ clipPath }} />
-      <div className={styles.container}>
-        <CircularProgress
-          sx={{
-            "--CircularProgress-size": "24rem",
-            position: "absolute",
-            "--CircularProgress-trackColor": "#797979",
-            "--CircularProgress-progressColor": "#FFD600",
-            "--CircularProgress-linecap": "none",
-            opacity: isStudying ? 1 : 0,
-            transition: "opacity 1s",
-          }}
-          thickness={20}
-          determinate
-          value={progress}
-        />
-        <CircularProgress
-          sx={{
-            "--CircularProgress-size": "24rem",
-            position: "absolute",
-            "--CircularProgress-trackColor": "#1A405F",
-            "--CircularProgress-progressColor": "#797979",
-            "--CircularProgress-linecap": "none",
-            opacity: isStudying ? 0 : 1,
-            transition: "opacity 1s",
-          }}
-          thickness={20}
-          determinate
-          value={progress}
-        />
+      <div className={styles.containerContainer}>
+        <div className={styles.container}>
+          <CircularProgress
+            sx={{
+              "--CircularProgress-size": "20rem",
+              "--CircularProgress-trackColor": "#797979",
+              "--CircularProgress-progressColor": "#FFD600",
+              "--CircularProgress-linecap": "none",
+              opacity: isStudying ? 1 : 0,
+              transition: "opacity 1s",
+              position: "absolute",
+            }}
+            className={styles.circularProgress}
+            thickness={20}
+            determinate
+            value={progress}
+          />
+          <CircularProgress
+            sx={{
+              "--CircularProgress-size": "20rem",
+              "--CircularProgress-trackColor": "#1A405F",
+              "--CircularProgress-progressColor": "#797979",
+              "--CircularProgress-linecap": "none",
+              opacity: isStudying ? 0 : 1,
+              transition: "opacity 1s",
+              position: "absolute",
+            }}
+            className={styles.circularProgress}
+            thickness={20}
+            determinate
+            value={progress}
+          />
+        </div>
         <div className={styles.timer}>
           <div>
             <p>{setCount}セット目</p>
