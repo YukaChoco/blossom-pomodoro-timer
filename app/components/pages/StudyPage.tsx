@@ -1,4 +1,3 @@
-import ModeIcon from "../ModeIcon";
 import Timer from "../Timer";
 import type { Mode } from "@/app/types/mode";
 
@@ -39,7 +38,6 @@ export default function StudyPage({
         studyMaxTime={studyMaxTime}
         breakMaxTime={breakMaxTime}
       />
-      <ModeIcon mode={mode} />
     </div>
   );
 }

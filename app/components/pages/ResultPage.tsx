@@ -10,6 +10,10 @@ export default function ResultPage({ score }: { score: Score }) {
       </div>
       <p>あなたの勉強は…</p>
       <h1 className={styles.flowerCondition}>{score.flower}分咲き</h1>
+      <div className={styles.modeIcon}>
+        <img src="./finished_image.svg" width="70%" />
+        <h3 className={styles.h3finish}>Finished!</h3>
+      </div>
     </div>
   );
 }
