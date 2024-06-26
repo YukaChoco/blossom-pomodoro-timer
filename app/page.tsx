@@ -2,9 +2,10 @@
 import useTimer from "./hooks/useTimer";
 import Header from "./components/Header";
 import styles from "./page.module.css";
-import { Mode } from "./types/mode";
 import ResultPage from "./components/pages/ResultPage";
 import StudyPage from "./components/pages/StudyPage";
+import { Mode } from "./types/mode";
+import ModeIcon from "./components/ModeIcon";
 
 export default function Home() {
   const {
@@ -13,6 +14,8 @@ export default function Home() {
     isStudying,
     isTimerRunning,
     setCount,
+    studyMaxTime,
+    breakMaxTime,
     score,
     startTimer,
     stopTimer,
@@ -28,7 +31,7 @@ export default function Home() {
 
   return (
     <main style={backgroundImg} className={styles.main}>
-      <Header />
+      <Header finishStudy={finishStudy} mode={mode} />
       {mode === Mode.Finished ? (
         <ResultPage score={score} />
       ) : (
@@ -41,9 +44,11 @@ export default function Home() {
           startTimer={startTimer}
           stopTimer={stopTimer}
           restartTimer={restartTimer}
-          finishStudy={finishStudy}
+          studyMaxTime={studyMaxTime}
+          breakMaxTime={breakMaxTime}
         />
       )}
+      <ModeIcon mode={mode} />
     </main>
   );
 }

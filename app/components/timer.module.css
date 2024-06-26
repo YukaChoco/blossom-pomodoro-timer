@@ -1,11 +1,47 @@
 .timer {
+  color: black;
   font-family: "Saira", sans-serif;
   font-weight: 700;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 24rem;
+  height: 24rem;
   padding: 20px 40px;
   text-align: center;
   font-size: 4.5rem;
-  border-radius: 12px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.timerButton {
+  background-color: white;
+  border: none;
+}
+
+.timer p {
+  margin-top: 25%;
+  font-size: 1.6rem;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  top: 18rem;
+  left: 50%;
+  left: 18rem;
+  float: left;
+  width: 24rem;
+  height: 24rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.sakuracontainer {
+  position: relative;
+  width: 60rem;
+  height: 60rem;
+}
+
+.clip {
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
 }

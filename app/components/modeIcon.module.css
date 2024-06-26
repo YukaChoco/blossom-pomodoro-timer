@@ -1,0 +1,15 @@
+.modeIcon{
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+}
+
+.h3study {
+    font-size: 30px;
+    padding-left: 10%;
+}
+
+.h3break {
+    font-size: 30px;
+    color: #FBE3E9;
+}

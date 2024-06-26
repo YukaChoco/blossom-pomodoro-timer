@@ -13,6 +13,7 @@ body {
 body {
   color: rgb(0, 0, 0);
   background-color: white;
+  font-family: "Zen Dots", sans-serif !important;
 }
 
 a {
