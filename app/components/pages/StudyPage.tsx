@@ -12,7 +12,6 @@ export default function StudyPage({
   startTimer,
   stopTimer,
   restartTimer,
-  finishStudy,
 }: {
   currentTime: number;
   mode: Mode;
@@ -24,7 +23,6 @@ export default function StudyPage({
   startTimer: () => void;
   stopTimer: () => void;
   restartTimer: () => void;
-  finishStudy: () => void;
 }) {
   return (
     <div>
@@ -40,7 +38,6 @@ export default function StudyPage({
         studyMaxTime={studyMaxTime}
         breakMaxTime={breakMaxTime}
       />
-      <button onClick={finishStudy}>勉強を終える</button>
     </div>
   );
 }

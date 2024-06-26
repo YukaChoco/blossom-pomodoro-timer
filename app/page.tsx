@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main style={backgroundImg} className={styles.main}>
-      <Header />
+      <Header finishStudy={finishStudy} mode={mode} />
       {mode === Mode.Finished ? (
         <ResultPage score={score} />
       ) : (
@@ -44,7 +44,6 @@ export default function Home() {
           startTimer={startTimer}
           stopTimer={stopTimer}
           restartTimer={restartTimer}
-          finishStudy={finishStudy}
           studyMaxTime={studyMaxTime}
           breakMaxTime={breakMaxTime}
         />
