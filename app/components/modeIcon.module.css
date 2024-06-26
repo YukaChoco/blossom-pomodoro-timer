@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 5%;
     right: 0;
+    transition: opacity 1s;
 }
 
 .h3study {
@@ -13,3 +14,8 @@
     font-size: 30px;
     color: #FBE3E9;
 }
+
+.h3finish {
+    font-size: 30px;
+    padding-left: 20%;
+  }
