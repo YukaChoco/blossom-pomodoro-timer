@@ -23,3 +23,15 @@
 .otukare {
   margin-bottom: 50px;
 }
+
+.modeIcon{
+  width: 20%;
+  position: fixed;
+  bottom: 1%;
+  right: 0;
+}
+
+.h3finish {
+  font-size: 30px;
+  padding-left: 20%;
+}
