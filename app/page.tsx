@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main style={backgroundImg} className={styles.main}>
-      <Header finishStudy={finishStudy} />
+      <Header finishStudy={finishStudy} mode={mode} />
       {mode === Mode.Finished ? (
         <ResultPage score={score} />
       ) : (
